@@ -1,2 +1,1 @@
-# CPS404
-Database System
+database
