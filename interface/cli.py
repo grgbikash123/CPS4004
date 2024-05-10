@@ -1,12 +1,14 @@
+
+
 def generate_inventory_report():
     print("Generating inventory report...")
-    # Call the method from InventoryReports class to generate the report
 
 
 class CLI:
-    def __init__(self, inventory_manager, transportation_manager):
+    def __init__(self, inventory_manager, transportation_manager, security_file):
         self.inventory_manager = inventory_manager
         self.transportation_manager = transportation_manager
+        self.security_file = security_file
 
     def start(self):
         print("Welcome to St. Mary's Logistics Database System")
@@ -17,7 +19,8 @@ class CLI:
             print("2. Update item quantity")
             print("3. Add transportation details")
             print("4. Generate inventory report")
-            print("5. Exit")
+            print("5. Register user")
+            print("6. Exit")
 
             choice = input("Enter your choice: ")
 
@@ -30,6 +33,8 @@ class CLI:
             elif choice == "4":
                 generate_inventory_report()
             elif choice == "5":
+                self.register()
+            elif choice == "6":
                 print("Exiting...")
                 break
             else:
@@ -59,3 +64,9 @@ class CLI:
 
         self.transportation_manager.add_transportation(vehicle_id, driver_id, destination, departure_time, arrival_time)
         print("Transportation details added")
+
+    def register(self):
+        username = input("username:")
+        password = input("password:")
+        role = input("role")
+        self.security_file.authenticate_user(username, password, role)
