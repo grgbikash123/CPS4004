@@ -20,8 +20,7 @@ CREATE TABLE IF NOT EXISTS transportation (
     destination TEXT,
     departure_time DATETIME,
     arrival_time DATETIME,
-    FOREIGN KEY (vehicle_id) REFERENCES transportation(id),
-    FOREIGN KEY (driver_id) REFERENCES transportation(id)
+    FOREIGN KEY (shipment_id) REFERENCES shipments(id)
 );
 
 CREATE TABLE IF NOT EXISTS users (
@@ -37,4 +36,10 @@ CREATE TABLE IF NOT EXISTS security_logs (
     action TEXT,
     timestamp DATETIME,
     FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS roles (
+    id INTEGER PRIMARY KEY,
+    role TEXT NOT NULL,
+    resource TEXT NOT NULL
 );
